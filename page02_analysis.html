@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Roast Index</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM Plex Mono">
+    <script src="src/script.js" type="text/javascript"></script>
+
+    <style>
+        body {
+            display: block;
+            justify-content: center;
+            height: 100vh;
+            /* Ensure the container takes up the full viewport height */
+            width: 100vw;
+            margin: 0;
+            font-family: 'IBM Plex Mono';
+            margin-bottom: 100px;
+            padding-bottom: 200px;
+            margin-top: 100px;
+            padding-top: 100px;
+        }
+
+        #part01,
+        #part02,
+        #part03,
+        #part04,
+        #part05,
+        #part06,
+        #part07,
+        #part08,
+        #part09 {
+            background-color: white;
+            margin-top: 20px;
+            margin-left: 27.5vw;
+            max-width: 45vw;
+            padding: 10px;
+            font-weight: 450;
+            line-height: 3;
+        }
+
+        button {
+            align-items: center;
+            appearance: none;
+            background-color: #FCFCFD;
+            border-radius: 4px;
+            border-width: 0;
+            box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+            box-sizing: border-box;
+            color: #36395A;
+            cursor: pointer;
+            display: inline-flex;
+            font-family: "IBM Plex Mono",monospace;
+            height: 48px;
+            justify-content: center;
+            line-height: 1;
+            list-style: none;
+            overflow: hidden;
+            padding-left: 25px;
+            padding-right: 25px;
+            position: relative;
+            text-align: left;
+            text-decoration: none;
+            transition: box-shadow .15s,transform .15s;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            white-space: nowrap;
+            will-change: box-shadow,transform;
+            font-weight: bold;
+            margin-left: auto;
+        }
+
+        button:focus {
+            box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+        }
+
+        button:hover {
+            box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            box-shadow: #D6D6E7 0 3px 7px inset;
+            transform: translateY(2px);
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1.5fr); /* 4 columns */
+            grid-template-rows: repeat(3, 1fr);    /* 3 rows */
+            gap: 35px; /* Adjust the gap between items as needed */
+            margin-bottom: 30px;
+        }
+
+        .grid-item {
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Vertically center content */
+            align-items: center; 
+            background-color: transparent; /* Set a background color for your items */
+            padding: 0px; /* Adjust padding as needed */
+            text-align: center; /* Center the content within the grid items */
+        }
+
+        img{
+            max-width: 130px;
+            max-height: 130px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="part02">
+        <p id="temp2"></p>
+        <button id="button21" onclick="prepart31()" style="display: none;">Yes</button>
+        <button id="button22" onclick="prepart32()" style="display: none;">No</button>
+    </div>
+
+    <div id="part03">
+        <p id="temp3"></p>
+        <button id="button31" onclick="prepart41()" style="display: none;">Yes</button>
+        <button id="button32" onclick="prepart42()" style="display: none;">No</button>
+    </div>
+
+    <div id="part04">
+        <p id="temp4"></p>
+        <button id="button41" onclick="prepart51()" style="display: none;">Yes</button>
+        <button id="button42" onclick="prepart52()" style="display: none;">No</button>
+    </div>
+
+    <div id="part05">
+        <p id="temp5"></p>
+        <div id="pregrid" style="display: none;">
+            <div class="grid-container">
+                <div class="grid-item"><img id="artist-fmk-1" src=""></div>
+                <div class="grid-item">
+                    <button id="button51" onclick="prepart61()">Fuck</button>
+                </div>
+                <div class="grid-item">
+                    <button id="button52" onclick="prepart62()">Marry</button>
+                </div>
+                <div class="grid-item">
+                    <button id="button53" onclick="prepart63()">Kill</button>
+                </div>
+                <div class="grid-item">
+                    <img id="artist-fmk-2" src="">
+                </div>
+                <div class="grid-item">
+                    <button id="button54" onclick="prepart64()">Fuck</button>
+                </div>
+                <div class="grid-item">
+                    <button id="button55" onclick="prepart65()">Marry</button>
+                </div>
+                <div class="grid-item">
+                    <button id="button56" onclick="prepart66()">Kill</button>
+                </div>
+                <div class="grid-item">
+                    <img id="artist-fmk-3" src="">
+                </div>
+                <div class="grid-item">
+                    <button id="button57" onclick="prepart67()">Fuck</button>
+                </div>
+                <div class="grid-item">
+                    <button id="button58" onclick="prepart68()">Marry</button>
+                </div>
+                <div class="grid-item">
+                    <button id="button59" onclick="prepart69()">Kill</button>
+                </div>
+            </div>
+            <button id="fmkcont" style="display: none;" onclick="part6()">Confirm</button>
+        </div>
+    </div>
+
+    <div id="part06">
+        <p id="temp6"></p>
+        <button id="button61" onclick="prepart71()" style="display: none;">Yes</button>
+        <button id="button62" onclick="prepart72()" style="display: none;">No</button>
+    </div>
+
+    <div id="part07">
+        <p id="temp7"></p>
+    </div>
+
+    <p id="fill"></p>
+
+</body>
+<script>
+
+    onLoginClick();
+
+    let user_name;
+    let artist_Name_Array=[];
+    let track_Name_Array=[];
+    let user_follows_list;
+    let genres_count={};
+    let keyWithHighestCount = null;
+    let top_recent_artist;
+    let data_dict = {};
+
+    let stan_artist;
+    let artist_stan_array = [
+        "MC STAN",
+        "Tony Kakkar",
+        "King",
+        "Emiway Bantai",
+        "Taylor Swift",
+        "AP Dhillon",
+        "Rihanna",
+        "Drake",
+        "Eminem",
+        "Coldplay",
+        "Selena Gomez",
+        "The Chainsmokers",
+        "Arijit Singh",
+        "Pritam",
+        "The Weeknd",
+        "Maroon 5",
+        "One Direction",
+        "5 Seconds of Summer",
+        "Ed Sheeran",
+        "Kanye West",
+        "Justin Bieber",
+        "Imagine Dragons",
+        "Calvin Harris",
+        "Ariana Grande",
+        "Post Malone",
+        "Billie Eilish",
+        "A$AP Rocky",
+        "Travis Scott",
+        "Shakira",
+        "Shawn Mendes",
+        "Martin Garrix",
+        "Dua Lipa",
+        "ZAYN",
+        "Harry Styles",
+        "A.R. Rahman",
+        "Neha Kakkar",
+        "Shreya Ghoshal",
+        "Sonu Nigam"
+    ];
+
+
+    function getTokenAndFillElement() {
+        let token = localStorage.getItem("token");
+        if (token !== null) {
+            clearInterval(tokenInterval); // Stop the interval once the token is not null
+
+            fullDataCollect(token);
+
+            let waitForData = function() {
+                let prof = localStorage.getItem("profile");
+                let art = localStorage.getItem("topArtists");
+                let track = localStorage.getItem("topTracks");
+                let fol = localStorage.getItem("userFollows");
+
+                if (prof !== null && prof !== '{"error":{"status":401,"message":"Invalid access token"}}' &&
+                    art !== null && art !== '{"error":{"status":401,"message":"Invalid access token"}}' &&
+                    track !== null && track !== '{"error":{"status":401,"message":"Invalid access token"}}' &&
+                    fol !== null && fol !== '{"error":{"status":401,"message":"Invalid access token"}}') {
+                    // All required values are available, call fullDataCollect
+                    fullDataCollect(token);
+
+                    let user_profile = JSON.parse(localStorage.getItem('profile'));
+                    let user_topArtists = JSON.parse(localStorage.getItem('topArtists'));
+                    let user_topTracks = JSON.parse(localStorage.getItem('topTracks'));
+                    let user_follows = JSON.parse(localStorage.getItem('userFollows'));
+                    
+                    top_recent_artist = JSON.parse(localStorage.getItem('topRecentArtist'));
+                    user_name=user_profile;
+                    user_follows_list=user_follows;
+
+                    data_dict['username']=user_profile.display_name;
+                    
+                    const artistNameArray = [];
+                    user_topArtists.items.forEach(item => {
+                        temp_arr=[]
+                        if (item.name) {
+                            temp_arr.push(item.name);
+                        }if(item.genres[0]){
+                            temp_arr.push(item.genres[0]);
+                        }else{
+                            temp_arr.push(null);
+                        }
+                        if(item.images[1].url){
+                            temp_arr.push(item.images[2].url);
+                        }else{
+                            temp_arr.push(null);
+                        }
+                        artistNameArray.push(temp_arr);
+                    });
+                    artist_Name_Array = artistNameArray;
+
+                    let stan_index = user_follows_list.indexOf(true);
+
+                    if(stan_index !== -1){
+                        stan_artist = artist_stan_array[stan_index];
+                    }else{
+                        stan_artist = artist_Name_Array[9][0];
+                    }
+
+                    document.getElementById("artist-fmk-1").src=artist_Name_Array[7][2];
+                    document.getElementById("artist-fmk-2").src=artist_Name_Array[8][2];
+                    document.getElementById("artist-fmk-3").src=artist_Name_Array[9][2];
+
+                    for (const item of artist_Name_Array) {
+                        const secondValue = item[1]; // Assuming the second value is always at index 1
+                        if (genres_count[secondValue]) {
+                            genres_count[secondValue]++; // Increment the count if it already exists
+                        } else {
+                            genres_count[secondValue] = 1; // Initialize the count to 1 if it doesn't exist
+                        }
+                    }
+
+                    let highestCount = 0;
+
+                    for (const key in genres_count) {
+                        if (genres_count[key] > highestCount) {
+                            highestCount = genres_count[key];
+                            keyWithHighestCount = key;
+                        }
+                    }
+
+
+                    const trackNameArray = [];
+                    user_topTracks.items.forEach(item => {
+                        let temp_arr=[];
+                        if (item.name) {
+                            temp_arr.push(item.name);
+                            if(item.artists[0].name){
+                                temp_arr.push(item.artists[0].name);
+                            }else{
+                                temp_arr.push("Artist Unknown");
+                            }
+                            if(item.popularity){
+                                temp_arr.push(item.popularity);
+                            }else{
+                                temp_arr.push(0);
+                            }
+                        }
+                        trackNameArray.push(temp_arr);
+                    });
+                    track_Name_Array = trackNameArray;
+
+
+                } else {
+                    // Retry after a certain interval
+                    setTimeout(waitForData, 1000); // You can adjust the interval as needed
+                }
+            };
+
+            waitForData(); // Start waiting for data
+        }
+    }
+
+
+    // Set an interval to check for the token
+    const tokenInterval = setInterval(getTokenAndFillElement, 1000); // Repeat every 1 second (adjust the interval duration as needed)
+
+    function typeTextInPara(divPara, textArray, buttonIds, displayType) {
+        let currentLine = 0;
+        const speed = 50;
+
+        function typeNextLine() {
+            if (currentLine < textArray.length) {
+                const currentText = textArray[currentLine];
+                let currentIndex = 0;
+
+                function typeNextCharacter() {
+                    if (currentIndex < currentText.length) {
+                        if (currentText.charAt(currentIndex) === '\n') {
+                            divPara.innerHTML += '<br>';
+                        } else {
+                            divPara.innerHTML += currentText.charAt(currentIndex);
+                        }
+                        currentIndex++;
+                        setTimeout(typeNextCharacter, speed);
+                    } else {
+                        currentLine++;
+                        setTimeout(typeNextLine, speed);
+                    }
+                }
+
+                typeNextCharacter();
+            } else {
+                // Loop through the buttonIds array and make each button display as block
+                for (const buttonId of buttonIds) {
+                    const loadScriptButton = document.getElementById(buttonId);
+                    if (loadScriptButton) {
+                        loadScriptButton.style.display = displayType;
+                    }
+            }
+        }
+        }
+
+        typeNextLine();
+    }
+
+
+    function part2() {
+        if (localStorage.getItem("token")) {
+            const textArray2 = [
+                `Hey ${data_dict['username']}\n`,
+                "Loading your music library...\n",
+                "Spotify limiting how many people can use this app at once, so you'll need to wait or try again later.\n",
+                "Analyzing your listening history...\n",
+                "lol\n",
+                "omg\n",
+                "okay hold up\n",
+                `Do you really listen to ${track_Name_Array[5][0]} by ${track_Name_Array[5][1]}\n`
+            ];
+            const typingPara2 = document.getElementById('temp2');
+            typeTextInPara(typingPara2, textArray2, ['button21','button22'],'inline');
+        }
+    }
+
+    window.addEventListener("load", function() {
+        setTimeout(part2, 5000);
+    });
+
+    function prepart31(){
+        document.getElementById("button21").onclick = "";
+        document.getElementById("button22").onclick = "";
+        document.getElementById("button21").style="background-color: #90ee90;";
+        part3();
+    }
+    function prepart32(){
+        document.getElementById("button21").onclick = "";
+        document.getElementById("button22").style="background-color: #FF7276;";
+        part3();
+    }
+
+    function part3() {
+        const textArray3 = [
+            "Like ironically\n"
+        ];
+        const typingPara3 = document.getElementById('temp3');
+        typeTextInPara(typingPara3, textArray3, ['button31','button32'],'inline');
+    }
+
+    function prepart41(){
+        document.getElementById("button31").onclick = "";
+        document.getElementById("button32").onclick = "";
+        document.getElementById("button31").style="background-color: #90ee90;";
+        part4();
+    }
+    function prepart42(){
+        document.getElementById("button31").onclick = "";
+        document.getElementById("button32").style="background-color: #FF7276;";
+        part4();
+    }
+
+    function part4() {
+        const textArray4 = [
+            "Cool\n",
+            `Seeing plenty of ${keyWithHighestCount}.\n`,
+            `Finding a lot of ${artist_Name_Array[0][1]}.\n`,
+            "Like... a LOT.\n",
+            `oh boy ${track_Name_Array[1][0]} by ${track_Name_Array[1][1]}.\n`,
+            `oh great another ${stan_artist} stan...\n`,
+            `You've been listening to a lot of ${top_recent_artist.items[0].name} lately.\n`,
+            "U Okay?"
+        ];
+        const typingPara4 = document.getElementById('temp4');
+        typeTextInPara(typingPara4, textArray4, ['button41','button42'],'inline');
+    }
+
+    function prepart51(){
+        document.getElementById("button41").onclick = "";
+        document.getElementById("button42").onclick = "";
+        document.getElementById("button41").style="background-color: #90ee90;";
+        part5();
+    }
+    function prepart52(){
+        document.getElementById("button41").onclick = "";
+        document.getElementById("button42").onclick = "";
+        document.getElementById("button42").style="background-color: #FF7276;";
+        part5();
+    }
+
+    function part5() {
+        const textArray5 = [
+            "listen i'm just a neural net do what you gotta do\n",
+            `Of course ${artist_Name_Array[3][0]}.\n`,
+            "Fuck marry kill. Choose fast."
+        ];
+        const typingPara5 = document.getElementById('temp5');
+        typeTextInPara(typingPara5, textArray5, ['pregrid'],'inline');
+    }
+
+    function prepart61(){
+        document.getElementById("button51").style="background-color: #90ee90;";
+        document.getElementById("button52").style="background-color: transparent;";
+        document.getElementById("button53").style="background-color: transparent;";
+    }
+
+    function prepart62(){
+        document.getElementById("button51").style="background-color: transparent;";
+        document.getElementById("button52").style="background-color: #90ee90;";
+        document.getElementById("button53").style="background-color: transparent;";
+    }
+
+    function prepart63(){
+        document.getElementById("button51").style="background-color: transparent;";
+        document.getElementById("button52").style="background-color: transparent;";
+        document.getElementById("button53").style="background-color: #90ee90;";
+    }
+
+    function prepart64(){
+        document.getElementById("button54").style="background-color: #90ee90;";
+        document.getElementById("button55").style="background-color: transparent;";
+        document.getElementById("button56").style="background-color: transparent;";
+    }
+
+    function prepart65(){
+        document.getElementById("button54").style="background-color: transparent;";
+        document.getElementById("button55").style="background-color: #90ee90;";
+        document.getElementById("button56").style="background-color: transparent;";
+    }
+
+    function prepart66(){
+        document.getElementById("button54").style="background-color: transparent;";
+        document.getElementById("button55").style="background-color: transparent;";
+        document.getElementById("button56").style="background-color: #90ee90;";
+    }
+
+    function prepart67(){
+        document.getElementById("button57").style="background-color: #90ee90;";
+        document.getElementById("button58").style="background-color: transparent;";
+        document.getElementById("button59").style="background-color: transparent;";
+        document.getElementById("fmkcont").style.display="inline";
+    }
+
+    function prepart68(){
+        document.getElementById("button57").style="background-color: transparent;";
+        document.getElementById("button58").style="background-color: #90ee90;";
+        document.getElementById("button59").style="background-color: transparent;";
+        document.getElementById("fmkcont").style.display="inline";
+    }
+
+    function prepart69(){
+        document.getElementById("button57").style="background-color: transparent;";
+        document.getElementById("button58").style="background-color: transparent;";
+        document.getElementById("button59").style="background-color: #90ee90;";
+        document.getElementById("fmkcont").style.display="inline";
+    }
+
+    function part6() {
+        const textArray6 = [
+            "Woah\n",
+            "Have you been to Coachella?"
+        ];
+        document.getElementById('temp6').innerHTML="";
+        const typingPara6 = document.getElementById('temp6');
+        typeTextInPara(typingPara6, textArray6, ['button61','button62'],'inline');
+    }
+
+    function prepart71(){
+        document.getElementById("button61").onclick = "";
+        document.getElementById("button62").onclick = "";
+        document.getElementById("button61").style="background-color: #90ee90;";
+        part7();
+    }
+
+    function prepart72(){
+        document.getElementById("button61").onclick = "";
+        document.getElementById("button62").onclick = "";
+        document.getElementById("button62").style="background-color: #FF7276;";
+        part7();
+    }
+
+    function redirectToNewPage() {
+        window.location.href = 'page03_result.html';
+    }
+
+    function part7() {
+        const textArray7 = [
+            "Clearly…\n",
+            "Well, I am slightly nauseated.\n",
+            "Lets get your final score."
+        ];
+        document.getElementById('temp7').innerHTML="";
+        const typingPara7 = document.getElementById('temp7');
+        typeTextInPara(typingPara7, textArray7,[]);
+        setTimeout(redirectToNewPage, 10000);
+    }
+</script>
+
+</html>

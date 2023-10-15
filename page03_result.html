@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Roast Index</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM Plex Mono">
+
+    <style>
+        body{
+            display: block;
+            justify-content: center;
+            height: 100vh; /* Ensure the container takes up the full viewport height */
+            width: 100vw;
+            margin: 0;
+            font-family: 'IBM Plex Mono';
+            line-height: 2;
+        }
+
+        #part01,#part02,#part03,#part04,#part05,#part06,#part07,#part08,#part09{
+            background-color: white;
+            border: none;
+            margin-top: 20px;
+            margin-left: 27.5vw;
+            max-width: 45vw;
+            padding: 10px;
+        }
+
+        
+    </style>
+</head>
+<body>
+
+    <div id="part01">
+        <b><h2 id="para-part01"></h2></b>
+    </div>
+
+    <div id="part02">
+        <p id="para-part02"></p>
+    </div>
+
+    <div id="part03">
+        <p id="para-part03"></p>
+    </div>
+
+    <div id="part04">
+        <p id="para-part04"></p>
+    </div>
+
+    <div id="part05">
+        <p id="para-part05"></p>
+    </div>
+
+    <div id="part06">
+        <p id="para-part06"></p>
+    </div>
+
+    <div id="part07">
+        <p id="para-part07"></p>
+    </div>
+
+    <div id="part08">
+        <p id="para-part08"></p>
+    </div>
+
+</body>
+<script>
+
+    let user_name;
+    let artist_Name_Array=[];
+    let track_Name_Array=[];
+    let user_follows_list;
+    let keyWithHighestCount = null;
+    let top_recent_artist;
+
+
+    let token = localStorage.getItem("token");
+        
+    let prof = localStorage.getItem("profile");
+    let art = localStorage.getItem("topArtists");
+    let track = localStorage.getItem("topTracks");
+    let fol = localStorage.getItem("userFollows");
+            
+    let user_profile = JSON.parse(localStorage.getItem('profile'));
+    let user_topArtists = JSON.parse(localStorage.getItem('topArtists'));
+    let user_topTracks = JSON.parse(localStorage.getItem('topTracks'));
+    let user_follows = JSON.parse(localStorage.getItem('userFollows'));
+                    
+    top_recent_artist = JSON.parse(localStorage.getItem('topRecentArtist'));
+    user_name=user_profile;
+    user_follows_list=user_follows;
+
+    let data_dict = {};
+    data_dict['username']=user_profile.display_name;
+                    
+    const artistNameArray = [];
+    user_topArtists.items.forEach(item => {
+        temp_arr=[]
+        if (item.name) {
+            temp_arr.push(item.name);
+        }if(item.genres[0]){
+            temp_arr.push(item.genres[0]);
+        }else{
+            temp_arr.push(null);
+        }
+        if(item.images[1].url){
+            temp_arr.push(item.images[2].url);
+        }else{
+            temp_arr.push(null);
+        }
+        artistNameArray.push(temp_arr);
+    });
+    artist_Name_Array = artistNameArray;
+
+    const genres_count = {}; // Dictionary for genre counts
+    const genres_names = {}; // Dictionary for genre names
+
+    for (const item of artist_Name_Array) {
+        const name = item[0]; // Name is the first value
+        const genre = item[1]; // Genre is the second value
+
+        // Update the genre count dictionary
+        if (genres_count[genre]) {
+            genres_count[genre]++;
+        } else {
+            genres_count[genre] = 1;
+        }
+
+        // Update the genre names dictionary
+        if (genres_names[genre]) {
+            genres_names[genre].push(name);
+        } else {
+            genres_names[genre] = [name];
+        }
+    }
+
+
+    let highestCount = 0;
+
+    for (const key in genres_count) {
+        if (genres_count[key] > highestCount) {
+            highestCount = genres_count[key];
+            keyWithHighestCount = key;
+        }
+    }
+
+
+    const trackNameArray = [];
+    user_topTracks.items.forEach(item => {
+        let temp_arr=[];
+        if (item.name) {
+            temp_arr.push(item.name);
+            if(item.artists[0].name){
+                temp_arr.push(item.artists[0].name);
+            }else{
+                temp_arr.push("Artist Unknown");
+            }
+            if(item.popularity){
+                temp_arr.push(item.popularity);
+            }else{
+                temp_arr.push(0);
+            }
+        }
+        trackNameArray.push(temp_arr);
+    });
+    track_Name_Array = trackNameArray;
+
+    let minIndex = 0; // Initialize with the first element
+    let minValue = track_Name_Array[0][2]; // Initialize with the value of the first element's third index
+
+    for (let i = 1; i < track_Name_Array.length; i++) {
+    if (track_Name_Array[i][2] < minValue) {
+        minValue = track_Name_Array[i][2];
+        minIndex = i;
+    }
+    }
+
+    function getRandomIntegerBetween20And30() {
+        // Math.random() generates a random floating-point number between 0 (inclusive) and 1 (exclusive).
+        // We multiply this by 11 to get a random number between 0 (inclusive) and 11 (exclusive).
+        // Then, we add 20 to the result to get a random number between 20 and 30 (inclusive).
+        return Math.floor(Math.random() * 11) + 20;
+    }
+
+    // Call the function to get a random integer between 20 and 30
+    const randomInteger = getRandomIntegerBetween20And30();
+
+    function getRandomYear() {
+        // Generate a random number between 0 and 5
+        const randomOffset = Math.floor(Math.random() * 6);
+
+        // Add the offset to the starting year (2010) to get a random year between 2010 and 2015
+        const randomYear = 2010 + randomOffset;
+
+        return randomYear;
+    }
+
+    // Call the function to get a random year
+    const randomYear = getRandomYear();
+
+    const roasts = [
+        "Your fashion sense is 'wearing-pajamas-all-day' bad.",
+        "Cooking skills are 'can't-even-boil-water' bad.",
+        "Dancing skills are 'two-left-feet' bad.",
+        "Your jokes are 'dad-joke' bad.",
+        "Painting skills are 'finger-painting-in-preschool' bad.",
+        "Your singing voice is 'cats-fighting' bad.",
+        "Math skills are 'struggles-with-basic-math' bad.",
+        "Soccer skills are 'goalie-without-hands' bad.",
+        "Gardening skills are 'can't-keep-a-cactus-alive' bad.",
+        "Your sense of direction is 'gets-lost-in-a-straight-hallway' bad.",
+        "Social skills are 'can't-hold-a-conversation' bad.",
+        "Your sense of style is 'socks-with-sandals' bad.",
+        "Texting skills are 'auto-correct-ruins-everything' bad.",
+        "Basketball skills are 'shoots-like-a-wild-goose' bad.",
+        "Cooking skills are 'burns-water' bad.",
+        "Your art skills are 'stick-figures-only' bad.",
+        "Singing skills are 'shower-soloist' bad.",
+        "Driving skills are 'parallel-parking-nightmare' bad.",
+        "Your photography skills are 'finger-over-the-lens' bad.",
+        "Science knowledge is 'believes-the-earth-is-flat' bad.",
+        "Comedy skills are 'laughs-at-own-jokes' bad.",
+        "Video game skills are 'dies-in-tutorial' bad.",
+        "Your DIY skills are 'just-call-a-professional' bad.",
+        "Spelling skills are 'misspells-basic-words' bad.",
+        "Your poker face is 'transparent-as-glass' bad.",
+        "Culinary skills are 'microwave-masterchef' bad.",
+        "Your decision-making skills are 'coin-flip' bad.",
+        "Navigation skills are 'GPS-dependency' bad.",
+        "Baking skills are 'burnt-cookies-every-time' bad.",
+        "Your sense of humor is 'knock-knock-jokes-only' bad.",
+        "Grammar skills are 'apostrophe-catastrophe' bad.",
+        "Memes are 'shares-minion-memes' bad.",
+        "Your guitar playing is 'strumming-like-a-cat-on-a-piano' bad.",
+        "Organization skills are 'lost-in-own-room' bad.",
+        "Fashion sense is 'socks-with-sandals' bad.",
+        "Public speaking skills are 'stammers-like-a-broken-record' bad.",
+        "Your cooking skills are 'microwave-maestro' bad.",
+        "Decision-making skills are 'indecisive-in-chief' bad.",
+        "Your dancing skills are 'dance-floor-disaster' bad.",
+        "Time management skills are 'always-late' bad.",
+        "Your puns are 'cringe-worthy' bad.",
+        "Tech skills are 'can't-set-the-clock-on-the-microwave' bad.",
+        "Sarcasm skills are 'too-literal' bad.",
+        "Your memory is 'goldfish-level' bad.",
+        "Construction skills are 'can't-hammer-a-nail' bad.",
+        "Your movie choices are 'only-watches-rom-coms' bad.",
+        "DIY skills are 'dangerous-with-a-hammer' bad.",
+        "Your karaoke skills are 'earplugs-required' bad.",
+        "Geography knowledge is 'thinks-Alaska-is-an-island' bad.",
+        "Your poker skills are 'predictable-as-a-metronome' bad."
+    ];
+
+    function getRandomRoasts(roastArray, numRoasts) {
+        if (numRoasts > roastArray.length) {
+            console.error("Number of roasts requested is greater than the available roasts.");
+            return [];
+        }
+
+        const selectedRoasts = [];
+        const usedIndices = new Set();
+
+        while (selectedRoasts.length < numRoasts) {
+            const randomIndex = Math.floor(Math.random() * roastArray.length);
+
+            if (!usedIndices.has(randomIndex)) {
+            selectedRoasts.push(roastArray[randomIndex]);
+            usedIndices.add(randomIndex);
+            }
+        }
+
+        return selectedRoasts;
+    }
+
+    const selected_roasts = getRandomRoasts(roasts, 5);
+
+    const main_roasts = [
+        "Your personality is like a Chernobyl-esque glowstick - toxic and no one wants to be near you.",
+        "Nobody puts baby in a corner, but I'd put you in a corner just to spare the world from your bad vibes.",
+        "If stupidity were a radioactive disaster, you'd be the Chernobyl of it.",
+        "You're the human equivalent of a Chernobyl glowstick that's been left out for decades.",
+        "You make me want to build a wall in the corner and put you behind it, Chernobyl-style.",
+        "Your presence is a Chernobyl-esque meltdown of good times.",
+        "Nobody puts baby in a corner, but for you, we'd make an exception.",
+        "You're so bad, you make the Chernobyl disaster look like a picnic.",
+        "If incompetence were a glowstick, you'd be the Chernobyl of it.",
+        "Your existence is like a Chernobyl glowstick - a disaster waiting to happen.",
+        "You're the reason why nobody puts baby in a corner - they don't want to be near you.",
+        "You radiate bad energy like a Chernobyl glowstick.",
+        "Your personality is like a Chernobyl glowstick - it's better to keep a safe distance.",
+        "Nobody puts baby in a corner, but for you, we'd gladly make an exception.",
+        "You're so bad that you make the Chernobyl disaster look like a walk in the park.",
+        "If incompetence were a glowstick, you'd be the Chernobyl of it.",
+        "Your existence is like a Chernobyl glowstick - a catastrophe waiting to happen.",
+        "You're the reason why nobody puts baby in a corner - they want to avoid your negativity.",
+        "You radiate negativity like a Chernobyl glowstick.",
+        "Your personality is like a Chernobyl glowstick - best kept at a distance.",
+        "Nobody puts baby in a corner, but they'd consider it for you, just to quarantine your bad vibes.",
+        "If ignorance had a glow, you'd be the Chernobyl of it.",
+        "Your existence is a Chernobyl-like disaster, and people avoid the fallout.",
+        "You're so terrible that even Chernobyl would look like a paradise in comparison.",
+        "You're the Chernobyl of charisma - hazardous to be around.",
+        "Your personality is like a Chernobyl glowstick - toxic and best avoided.",
+        "Nobody puts baby in a corner, but I'd put you in a corner just to protect the world from your bad energy.",
+        "If mistakes were a radioactive disaster, you'd be the Chernobyl of them.",
+        "You're the human equivalent of a Chernobyl glowstick that's been forgotten.",
+        "You make me want to construct a lead-lined bunker in the corner and put you behind it, Chernobyl-style.",
+        "Your presence is a Chernobyl-esque meltdown of happiness.",
+        "Nobody puts baby in a corner, but for you, they'd make an exception.",
+        "You're so bad that even Chernobyl would seem like a paradise in contrast.",
+        "If incompetence were a glowstick, you'd be the Chernobyl of it.",
+        "Your existence is like a Chernobyl glowstick - a disaster waiting to unfold.",
+        "You're the reason why nobody puts baby in a corner - they don't want to be anywhere near your negativity.",
+        "Your personality is like a Chernobyl glowstick - toxic and best kept away.",
+        "Nobody puts baby in a corner, but I'd put you in a corner just to shield the world from your bad attitude.",
+        "If mistakes were a radioactive disaster, you'd be the Chernobyl of them.",
+        "You're the human equivalent of a Chernobyl glowstick that's been rotting away.",
+        "You make me want to build a lead-lined bunker in the corner and put you behind it, Chernobyl-style.",
+        "Your presence is a Chernobyl-esque meltdown of joy and fun.",
+        "Nobody puts baby in a corner, but for you, they'd make an exception.",
+        "You're so bad that even Chernobyl would look like a paradise in comparison.",
+        "If incompetence were a glowstick, you'd be the Chernobyl of it.",
+        "Your existence is like a Chernobyl glowstick - a catastrophe waiting to happen.",
+    ];
+
+    function getRandomMainRoast() {
+        const randomIndex = Math.floor(Math.random() * main_roasts.length);
+        const selected_main_roast = main_roasts[randomIndex];
+        return selected_main_roast;
+    }
+
+    // Example of how to use the function:
+    const selected_main_roast = getRandomMainRoast();
+    console.log(selected_main_roast);
+
+    
+    function typeText(elementId, textArray, callback) {
+    const element = document.getElementById(elementId);
+    let currentLineIndex = 0;
+    let currentCharIndex = 0;
+
+    function typeLine() {
+        if (currentLineIndex < textArray.length) {
+            const currentLine = textArray[currentLineIndex];
+            if (currentCharIndex < currentLine.length) {
+                element.innerHTML += currentLine[currentCharIndex];
+                currentCharIndex++;
+                setTimeout(typeLine, 50); // Adjust typing speed (e.g., 50ms per character)
+            } else {
+                element.innerHTML += "<br>";
+                currentLineIndex++;
+                currentCharIndex = 0;
+                setTimeout(typeLine, 500); // Adjust the delay before typing the next line (e.g., 500ms)
+            }
+        } else {
+            if (callback) {
+                callback(); // Call the callback function when typing is complete
+            }
+        }
+    }
+
+    typeLine();
+}
+    
+setTimeout(function () {
+    let textPart1 = [`Your spotify was ${selected_main_roast}.`];
+
+    typeText("para-part01", textPart1, function () {
+        setTimeout(function () {
+            let textPart2 = [`Thank your obsessions with ${artist_Name_Array[9][0]}, ${keyWithHighestCount} (e.g., ${genres_names[keyWithHighestCount]}), and ${track_Name_Array[10][0]} - From "${track_Name_Array[10][1]}" Soundtrack for that.`];
+
+            typeText("para-part02", textPart2, function () {
+                setTimeout(function () {
+                    let textPart3 = [
+                        'Based on your listening habits, I can also tell you your Spotify was...',
+                        `- ${selected_roasts[0]}`,
+                        `- ${selected_roasts[1]}`,
+                        `- ${selected_roasts[2]}`,
+                        `- ${selected_roasts[3]}`,
+                        `- ${selected_roasts[4]}`];
+                    typeText("para-part03", textPart3, function () {
+                        setTimeout(function () {
+                            let textPart4 = [
+                                'You listen to these too much:',
+                                ` - ${track_Name_Array[0][0]} by ${track_Name_Array[0][1]}`,
+                                ` - ${track_Name_Array[1][0]} by ${track_Name_Array[1][1]}`,
+                                ` - ${track_Name_Array[2][0]} by ${track_Name_Array[2][1]}`,
+                                ` - ${track_Name_Array[3][0]} by ${track_Name_Array[3][1]}`,
+                                ` - ${track_Name_Array[4][0]} by ${track_Name_Array[4][1]}`];
+                            typeText("para-part04", textPart4, function () {
+                                setTimeout(function () {
+                                    let textPart5 = [
+                                        'You stan these artists to an uncomfortable extent:',
+                                        ` - ${artist_Name_Array[0][0]}`,
+                                        ` - ${artist_Name_Array[1][0]}`,
+                                        ` - ${artist_Name_Array[2][0]}`,
+                                        ` - ${artist_Name_Array[3][0]}`,
+                                        ` - ${artist_Name_Array[4][0]}`];
+                                    typeText("para-part05", textPart5, function () {
+                                        setTimeout(function () {
+                                            let textPart6 = [`You are ${randomInteger}% basic. You\'re trying to impress with some obscure tracks like ${track_Name_Array[minIndex][0]}. Nobody\'s fooled..`];
+                                            typeText("para-part06", textPart6, function () {
+                                                setTimeout(function () {
+                                                    let textPart7 = [`You\'re too trendy for your own good. You know there\'s good music from before ${randomYear}, right?`];
+                                                    typeText("para-part07", textPart7, function () {
+                                                        setTimeout(function () {
+                                                            let textPart8 = [
+                                                                'Analysis finally complete.',
+                                                                'I need to go recalibrate my taste levels.',
+                                                                'Shutting down.'];
+                                                            typeText("para-part08", textPart8);
+                                                        }, 1000); // 2-second delay before typing the next part
+                                                    });
+                                                }, 1000); // 2-second delay before typing the next part
+                                            });
+                                        }, 1000); // 2-second delay before typing the next part
+                                    });
+                                }, 1000); // 2-second delay before typing the next part
+                            });
+                        }, 1000); // 2-second delay before typing the next part
+                    });
+                }, 1000); // 2-second delay before typing the next part
+            });
+        }, 1000); // 2-second delay before typing the next part
+    });
+},5000);
+        
+</script>
+</html>
