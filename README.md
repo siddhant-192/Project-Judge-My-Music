@@ -18,7 +18,7 @@
 
 ## Project Overview
 
-Spotify Roast Index is an interactive web application that analyzes a user's Spotify listening habits and playfully "roasts" their music preferences. It provides insights into the user's top artists, top tracks, and their musical personality, while also offering amusing roasts based on their music choices.
+Judge My Music is an interactive web application that analyzes a user's Spotify listening habits and playfully "roasts" their music preferences. It provides insights into the user's top artists, top tracks, and their musical personality, while also offering amusing roasts based on their music choices.
 
 ### Features
 
@@ -48,7 +48,7 @@ The application is built with a combination of HTML, CSS, and JavaScript. It lev
 
 ### Music Analysis
 
-The Roast Index analyzes your music preferences based on your top artists, top tracks, and genres. This is achieved through integration with the Spotify Web API.
+The application analyzes your music preferences based on your top artists, top tracks, and genres. This is achieved through integration with the Spotify Web API.
 
 ### Roast Generation
 
